@@ -24,7 +24,7 @@ while (!exit)
 
     Random random = new Random();
     int randomIndex = random.Next(1, plants.Count);
-
+        
     Console.WriteLine("Welcome to the plant adoption market. Select and option below to perform the action!");
     Console.WriteLine(" ");
     Console.WriteLine("\ta - Display all plants");
@@ -32,7 +32,9 @@ while (!exit)
     Console.WriteLine("\tc - Adopt a plant");
     Console.WriteLine("\td - Delist a plant");
     Console.WriteLine("\te - Choose the plant of the day ");
-    Console.WriteLine("\tf - Exit");
+    Console.WriteLine("\tf - Search plant by light needs ");
+    Console.WriteLine("\tg - Exit");
+    
     Console.WriteLine("\nEnter your selection:");
 
     string selection = Console.ReadLine().ToLower();
@@ -101,11 +103,31 @@ while (!exit)
             }
             break;
         case "f":
+            Console.WriteLine("Enter the light needs of the plant you would like to search between 1 and 5:");
+            int lightNeedsToSearch = Convert.ToInt32(Console.ReadLine());
+            List<Plant> plantsByLightNeeds = plants.FindAll(plant => plant.LightNeeds == lightNeedsToSearch);
+            if (plantsByLightNeeds.Count > 0)
+            {
+                Console.WriteLine($"Here are all the plants with light needs of {lightNeedsToSearch}:");
+                int index = 1; 
+                foreach (Plant plant in plantsByLightNeeds)
+                {
+                    Console.WriteLine($"{index}. {plant.Species} in {plant.City} {(plant.Sold ? "was sold" : "is available")} for the price of ${plant.AskingPrice} dollars");
+                    index++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("No plants found with the specified light needs.");
+            }
+            break;
+        case "g":
             exit = true;
             break;
         default:
             Console.WriteLine("Invalid selection. Please try again.");
             break;
     }
+    Console.WriteLine(" ");
     Console.WriteLine(" ");
 }
