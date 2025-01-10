@@ -35,7 +35,7 @@ switch (selection)
     case "b":
         Console.WriteLine("Enter the species of the plant you would like to post for adoption:");
         string species = Console.ReadLine();
-        Console.WriteLine("Enter the light needs of the plant:");
+        Console.WriteLine("Enter the light needs of the plant from 1 - 5:");
         int lightNeeds = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine("Enter the asking price of the plant:");
         decimal askingPrice = Convert.ToDecimal(Console.ReadLine());
