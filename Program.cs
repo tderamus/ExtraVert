@@ -5,7 +5,7 @@ using System.Xml.Linq;
 
 List<Plant> plants = new List<Plant>
 {
-    new Plant { Species = "Dafodil", LightNeeds = 3, AskingPrice = 30, City = "Seattle", ZIP = "98101", Sold = false },
+    new Plant { Species = "Dafodil", LightNeeds = 3, AskingPrice = 30, City = "Seattle", ZIP = "98101", Sold = true },
     new Plant { Species = "Cactus", LightNeeds = 2, AskingPrice = 20, City = "Seattle", ZIP = "98101", Sold = false },
     new Plant { Species = "Trefold", LightNeeds = 3, AskingPrice = 40, City = "Seattle", ZIP = "98101", Sold = false },
     new Plant { Species = "Hosta Plant", LightNeeds = 2, AskingPrice = 15, City = "Seattle", ZIP = "98101", Sold = false },
