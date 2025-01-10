@@ -25,12 +25,6 @@ string selection = Console.ReadLine().ToLower();
 switch (selection)
 {
     case "a":
-        /* When the user chooses this option, all of the plants in the database should be listed one per-line, with the following format:
-        < Number >. < Name of Plant> in < City > <is available / was sold > for < Price > dollars
-        Examples: 
-        1.A Ficus in Pasadena was sold for 15 dollars
-        2.A Hydrangea in Walla Walla is available for 25 dollars"*/
-
         Console.WriteLine("Here are all the plants available for adoption:");
         for(int i = 0; i < plants.Count; i++)
         {
