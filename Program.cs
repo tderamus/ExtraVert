@@ -91,7 +91,14 @@ while (!exit)
             break;
         case "e":
             Plant plantOfTheDay = plants[randomIndex];
-            Console.WriteLine($"The plant of the day is {plantOfTheDay.Species} in {plantOfTheDay.City} with light needs {plantOfTheDay.LightNeeds} for the price of ${plantOfTheDay.AskingPrice} dollars");
+            if (plantOfTheDay.Sold)
+            {
+                Console.WriteLine("The plant of the day is not available for adoption.");
+            }
+            else
+            {
+                Console.WriteLine($"The plant of the day is {plantOfTheDay.Species} in {plantOfTheDay.City}, with light needs of {plantOfTheDay.LightNeeds} and the price of ${plantOfTheDay.AskingPrice} dollars");
+            }
             break;
         case "f":
             exit = true;
