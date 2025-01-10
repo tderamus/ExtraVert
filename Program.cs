@@ -63,10 +63,10 @@ switch (selection)
     case "d":
         Console.WriteLine("Enter the species of the plant you would like to delist:");
         string speciesToDelist = Console.ReadLine();
-        Plant plantToDelist = plants.Find(plant => plant.Species == speciesToDelist && plant.Sold == false);
-        if (plantToDelist != null)
+        int plantIndex = plants.FindIndex(plant => plant.Species == speciesToDelist && !plant.Sold);
+        if (plantIndex != -1)
         {
-            plants.Remove(plantToDelist);
+            plants.RemoveAt(plantIndex);
             Console.WriteLine("Plant delisted successfully!");
         }
         else
