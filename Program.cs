@@ -66,7 +66,7 @@ while (!exit)
         case "c":
             Console.WriteLine("Enter the species of the plant you would like to adopt:");
             string speciesToAdopt = Console.ReadLine();
-            Plant plantToAdopt = plants.Find(plant => plant.Species == speciesToAdopt && plant.Sold == false);
+            Plant plantToAdopt = plants.Find(plant => plant.Species == speciesToAdopt && !plant.Sold && plant.AvailableUntil > DateTime.Now);
             if (plantToAdopt != null)
             {
                 plantToAdopt.Sold = true;
