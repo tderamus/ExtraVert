@@ -7,14 +7,14 @@ bool exit = false;
 
 List<Plant> plants = new List<Plant>
 {
-    new Plant { Species = "Dafodil", LightNeeds = 3, AskingPrice = 30, City = "Seattle", ZIP = "98101", Sold = true },
-    new Plant { Species = "Cactus", LightNeeds = 2, AskingPrice = 20, City = "Baltimore", ZIP = "98101", Sold = false },
-    new Plant { Species = "Trefold", LightNeeds = 3, AskingPrice = 40, City = "Erlanger", ZIP = "98101", Sold = false },
-    new Plant { Species = "Hosta Plant", LightNeeds = 2, AskingPrice = 15, City = "Atlanta", ZIP = "98101", Sold = false },
-    new Plant { Species = "Spider Plant", LightNeeds = 2, AskingPrice = 40, City = "Birmingham", ZIP = "98101", Sold = false },
-    new Plant { Species = "Peace Lilly", LightNeeds = 2, AskingPrice = 30, City = "Mobile", ZIP = "35801", Sold = false },
-    new Plant { Species = "Orchid", LightNeeds = 2, AskingPrice = 25, City = "Seattle", ZIP = "49208", Sold = false },
-    new Plant { Species = "Jade Plant", LightNeeds = 2, AskingPrice = 35, City = "Seattle", ZIP = "81309", Sold = false }
+    new Plant { Species = "Dafodil", LightNeeds = 3, AskingPrice = 30, City = "Seattle", ZIP = "98101", Sold = true, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Cactus", LightNeeds = 2, AskingPrice = 20, City = "Baltimore", ZIP = "98101", Sold = false , AvailableUntil = new DateTime(2025, 12, 31)},
+    new Plant { Species = "Trefold", LightNeeds = 3, AskingPrice = 40, City = "Erlanger", ZIP = "98101", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Hosta Plant", LightNeeds = 2, AskingPrice = 15, City = "Atlanta", ZIP = "98101", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Spider Plant", LightNeeds = 2, AskingPrice = 40, City = "Birmingham", ZIP = "98101", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Peace Lilly", LightNeeds = 2, AskingPrice = 30, City = "Mobile", ZIP = "35801", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Orchid", LightNeeds = 2, AskingPrice = 25, City = "Seattle", ZIP = "49208", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Jade Plant", LightNeeds = 2, AskingPrice = 35, City = "Seattle", ZIP = "81309", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) }
 };
 
 
@@ -34,7 +34,7 @@ while (!exit)
     Console.WriteLine("\te - Choose the plant of the day ");
     Console.WriteLine("\tf - Search plant by light needs ");
     Console.WriteLine("\tg - Exit");
-    
+
     Console.WriteLine("\nEnter your selection:");
 
     string selection = Console.ReadLine().ToLower();
@@ -66,7 +66,7 @@ while (!exit)
         case "c":
             Console.WriteLine("Enter the species of the plant you would like to adopt:");
             string speciesToAdopt = Console.ReadLine();
-            Plant plantToAdopt = plants.Find(plant => plant.Species == speciesToAdopt && plant.Sold == false);
+            Plant plantToAdopt = plants.Find(plant => plant.Species == speciesToAdopt && !plant.Sold && plant.AvailableUntil > DateTime.Now);
             if (plantToAdopt != null)
             {
                 plantToAdopt.Sold = true;
@@ -109,7 +109,7 @@ while (!exit)
             if (plantsByLightNeeds.Count > 0)
             {
                 Console.WriteLine($"Here are all the plants with light needs of {lightNeedsToSearch}:");
-                int index = 1; 
+                int index = 1;
                 foreach (Plant plant in plantsByLightNeeds)
                 {
                     Console.WriteLine($"{index}. {plant.Species} in {plant.City} {(plant.Sold ? "was sold" : "is available")} for the price of ${plant.AskingPrice} dollars");
@@ -128,6 +128,7 @@ while (!exit)
             Console.WriteLine("Invalid selection. Please try again.");
             break;
     }
+    Console.WriteLine(" ");
     Console.WriteLine(" ");
     Console.WriteLine(" ");
 }
