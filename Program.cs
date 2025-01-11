@@ -24,7 +24,7 @@ while (!exit)
 
     Random random = new Random();
     int randomIndex = random.Next(1, plants.Count);
-
+        
     Console.WriteLine("Welcome to the plant adoption market. Select and option below to perform the action!");
     Console.WriteLine(" ");
     Console.WriteLine("\ta - Display all plants");
@@ -128,6 +128,7 @@ while (!exit)
             Console.WriteLine("Invalid selection. Please try again.");
             break;
     }
+    Console.WriteLine(" ");
     Console.WriteLine(" ");
     Console.WriteLine(" ");
 }
