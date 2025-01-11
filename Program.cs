@@ -7,14 +7,14 @@ bool exit = false;
 
 List<Plant> plants = new List<Plant>
 {
-    new Plant { Species = "Dafodil", LightNeeds = 3, AskingPrice = 30, City = "Seattle", ZIP = "98101", Sold = true },
-    new Plant { Species = "Cactus", LightNeeds = 2, AskingPrice = 20, City = "Baltimore", ZIP = "98101", Sold = false },
-    new Plant { Species = "Trefold", LightNeeds = 3, AskingPrice = 40, City = "Erlanger", ZIP = "98101", Sold = false },
-    new Plant { Species = "Hosta Plant", LightNeeds = 2, AskingPrice = 15, City = "Atlanta", ZIP = "98101", Sold = false },
-    new Plant { Species = "Spider Plant", LightNeeds = 2, AskingPrice = 40, City = "Birmingham", ZIP = "98101", Sold = false },
-    new Plant { Species = "Peace Lilly", LightNeeds = 2, AskingPrice = 30, City = "Mobile", ZIP = "35801", Sold = false },
-    new Plant { Species = "Orchid", LightNeeds = 2, AskingPrice = 25, City = "Seattle", ZIP = "49208", Sold = false },
-    new Plant { Species = "Jade Plant", LightNeeds = 2, AskingPrice = 35, City = "Seattle", ZIP = "81309", Sold = false }
+    new Plant { Species = "Dafodil", LightNeeds = 3, AskingPrice = 30, City = "Seattle", ZIP = "98101", Sold = true, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Cactus", LightNeeds = 2, AskingPrice = 20, City = "Baltimore", ZIP = "98101", Sold = false , AvailableUntil = new DateTime(2025, 12, 31)},
+    new Plant { Species = "Trefold", LightNeeds = 3, AskingPrice = 40, City = "Erlanger", ZIP = "98101", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Hosta Plant", LightNeeds = 2, AskingPrice = 15, City = "Atlanta", ZIP = "98101", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Spider Plant", LightNeeds = 2, AskingPrice = 40, City = "Birmingham", ZIP = "98101", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Peace Lilly", LightNeeds = 2, AskingPrice = 30, City = "Mobile", ZIP = "35801", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Orchid", LightNeeds = 2, AskingPrice = 25, City = "Seattle", ZIP = "49208", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) },
+    new Plant { Species = "Jade Plant", LightNeeds = 2, AskingPrice = 35, City = "Seattle", ZIP = "81309", Sold = false, AvailableUntil = new DateTime(2025, 12, 31) }
 };
 
 
