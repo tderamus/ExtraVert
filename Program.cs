@@ -51,7 +51,7 @@ internal class Program
                     for (int i = 0; i < plants.Count; i++)
                     {
                         Plant plant = plants[i];
-                        Console.WriteLine($"{i + 1}. {plant.Species} in {plant.City} {(plant.Sold ? "was sold" : "is available")} for the price of ${plant.AskingPrice} dollars");
+                        Console.WriteLine($"{i + 1}. {PlantDetails(plant)}");
                     }
                     break;
                 case "b":
@@ -131,20 +131,21 @@ internal class Program
                     }
                     else
                     {
-                        Console.WriteLine($"The plant of the day is {plantOfTheDay.Species} in {plantOfTheDay.City}, with light needs of {plantOfTheDay.LightNeeds} and the price of ${plantOfTheDay.AskingPrice} dollars");
+                        Console.WriteLine($"The plant of the day is {PlantDetails(plantOfTheDay)}");
                     }
                     break;
                 case "f":
                     Console.WriteLine("Enter the light needs of the plant you would like to search between 1 and 5:");
                     int lightNeedsToSearch = Convert.ToInt32(Console.ReadLine());
                     List<Plant> plantsByLightNeeds = plants.FindAll(plant => plant.LightNeeds == lightNeedsToSearch);
+
                     if (plantsByLightNeeds.Count > 0)
                     {
                         Console.WriteLine($"Here are all the plants with light needs of {lightNeedsToSearch}:");
                         int index = 1;
                         foreach (Plant plant in plantsByLightNeeds)
                         {
-                            Console.WriteLine($"{index}. {plant.Species} in {plant.City} {(plant.Sold ? "was sold" : "is available")} for the price of ${plant.AskingPrice} dollars");
+                            Console.WriteLine($"The plant of the day is {PlantDetails(plant)}");
                             index++;
                         }
                     }
@@ -221,6 +222,10 @@ internal class Program
             Console.WriteLine(" ");
             Console.WriteLine(" ");
             Console.WriteLine(" ");
+        }
+        string PlantDetails(Plant plant)
+        {
+            return $"The plant of the day is {plant.Species} in {plant.City}, with light needs of {plant.LightNeeds} and the price of ${plant.AskingPrice} dollars";
         }
     }
 }
