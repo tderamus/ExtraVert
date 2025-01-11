@@ -34,6 +34,7 @@ while (!exit)
     Console.WriteLine("\te - Choose the plant of the day ");
     Console.WriteLine("\tf - Search plant by light needs ");
     Console.WriteLine("\tg - Exit");
+    Console.WriteLine("\th - View plant statistics");
 
     Console.WriteLine("\nEnter your selection:");
 
@@ -124,6 +125,64 @@ while (!exit)
         case "g":
             exit = true;
             break;
+        case "h":
+            // Initialize variables
+            string lowestPricePlantName = null;
+            decimal lowestPrice = decimal.MaxValue;
+            int numberOfPlantsAvailable = 0;
+            string highestLightNeedsPlantName = null;
+            int highestLightNeeds = int.MinValue;
+            int totalLightNeeds = 0;
+            int totalPlants = plants.Count;
+            int totalSoldPlants = 0;
+
+            // Loop through the list of plants
+            foreach (var plant in plants)
+            {
+                // Check for the lowest price plant
+                if (plant.AskingPrice < lowestPrice)
+                {
+                    lowestPrice = plant.AskingPrice;
+                    lowestPricePlantName = plant.Species;
+                }
+
+                // Count available plants
+                if (!plant.Sold)
+                {
+                    numberOfPlantsAvailable++;
+                }
+
+                // Check for the highest light needs
+                if (plant.LightNeeds > highestLightNeeds)
+                {
+                    highestLightNeeds = plant.LightNeeds;
+                    highestLightNeedsPlantName = plant.Species;
+                }
+
+                // Sum up light needs
+                totalLightNeeds += plant.LightNeeds;
+
+                // Count sold plants
+                if (plant.Sold)
+                {
+                    totalSoldPlants++;
+                }
+            }
+
+            // Calculate the average light needs
+            double averageLightNeeds = totalPlants > 0 ? (double)totalLightNeeds / totalPlants : 0;
+
+            // Calculate the percentage of plants adopted (sold)
+            double percentageAdopted = totalPlants > 0 ? (double)totalSoldPlants / totalPlants * 100 : 0;
+
+            // Print the results
+            Console.WriteLine($"Lowest price plant name: {lowestPricePlantName}");
+            Console.WriteLine($"Number of Plants Available: {numberOfPlantsAvailable}");
+            Console.WriteLine($"Name of plant with highest light needs: {highestLightNeedsPlantName}");
+            Console.WriteLine($"Average light needs: {averageLightNeeds:F2}");
+            Console.WriteLine($"Percentage of plants adopted: {percentageAdopted:F2}%");
+            break;
+
         default:
             Console.WriteLine("Invalid selection. Please try again.");
             break;
